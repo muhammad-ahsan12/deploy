@@ -1,7 +1,7 @@
-streamlit==1.21.0
-langchain==0.0.6
-beautifulsoup4==4.12.2
-requests==2.31.0
-faiss-cpu==1.7.3
-langchain-google-genai==0.0.1
-langchain-groq==0.0.1
+streamlit
+langchain
+beautifulsoup4
+requests
+faiss-cpu
+langchain-google-genai
+langchain-groq
