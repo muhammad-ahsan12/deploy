@@ -22,15 +22,31 @@ messages = [
 prompt = ChatPromptTemplate.from_messages(messages)
 
 def main():
+    st.set_page_config(page_title="Chat With Website", layout="wide")
+
     # Set up the Streamlit app interface
     st.title('🦜🔗 Chat With Website')
-    st.subheader('Input your website URL, ask questions, and receive answers directly from the website.')
-    key = st.text_input("Enter the Google API key", type='password')
-    url = st.text_input("Insert The website URL")
-    user_question = st.text_input("Ask a question (query/prompt)")
+    st.markdown("""
+    This chatbot extracts text from a specified website in real time and answers questions about the content provided.
+    You can ask questions related to the website content and get accurate responses based on the extracted data.\n
+    For example, you might ask questions like ***"What is the main topic of this page?"*** or,\n
+    ***"Can you summarize the key points?"***.\n
+    The project repository can be found [on my Github](https://github.com/muhammad-ahsan12/MakTek-internship-Task.git).
+    """)
+    st.sidebar.write('***Input your website URL , ask questions below, and receive answers directly from the website.***')
 
-    if st.button("Submit Query", type="primary"):
-        os.environ['GOOGLE_API_KEY'] = key  # Set the Google API key
+    # Sidebar for URL input
+    url = st.sidebar.text_input("Insert the website URL")
+
+    # Initialize chat history if not present
+    if "chat_history" not in st.session_state:
+        st.session_state.chat_history = []
+
+    # Use st.chat_input for user questions
+    user_question = st.chat_input("Ask a question (query/prompt)")
+
+    if user_question and url:
+        os.environ['GOOGLE_API_KEY'] = "AIzaSyA0S7F21ExbBnR06YXkEi7aj94nWP5kJho"  # Set the Google API key
         
         # Load HTML content from the URL
         r = requests.get(url)
@@ -58,12 +74,31 @@ def main():
         # Create a RetrievalQA instance from the model and retriever
         qa = RetrievalQA.from_chain_type(llm=llm, chain_type="stuff", retriever=retriever)
 
-        # Run the user's question through the RetrievalQA and display the response
-        response = qa.invoke({"query": user_question})
-        if 'result' in response:
-            st.write(response['result'])
-        else:
-            st.write("Answer not found.")
+        # Include chat history in the query
+        full_query = {
+            "query": user_question,
+            "chat_history": st.session_state.chat_history
+        }
+
+        # Run the user's question through the RetrievalQA and get the response
+        response = qa.invoke(full_query)
+        
+        # Update the chat history
+        st.session_state.chat_history.append({"query": user_question, "response": response['result']})
+
+        # Refresh the page to display the new chat message
+        st.experimental_rerun()
+
+    # Display the chat history in a structured manner
+    if st.session_state.chat_history:
+        for entry in st.session_state.chat_history:
+            user_col, bot_col = st.columns([1, 3])
+            with user_col:
+                st.markdown(f"😃 **You:**")
+                st.markdown(f"<div style='background-color: #FFC0CB; padding: 10px; border-radius: 10px;'>{entry['query']}</div>", unsafe_allow_html=True)
+            with bot_col:
+                st.markdown(f"🤖 **Bot:**")
+                st.markdown(f"<div style='background-color: #FFD700; padding: 10px; border-radius: 10px;'>{entry['response']}</div>", unsafe_allow_html=True)
 
 if __name__ == '__main__':
     main()
