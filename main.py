@@ -33,7 +33,8 @@ def main():
     ***"Can you summarize the key points?"***.\n
     The project repository can be found [on my Github](https://github.com/muhammad-ahsan12/MakTek-internship-Task.git).
     """)
-    st.sidebar.write('***Input your website URL , ask questions below, and receive answers directly from the website.***')
+    st.sidebar.title("Input your website URL")
+    st.sidebar.write('***Ask questions below, and receive answers directly from the website.***')
 
     # Sidebar for URL input
     url = st.sidebar.text_input("Insert the website URL")
