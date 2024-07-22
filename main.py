@@ -7,7 +7,6 @@ from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from langchain.chains import ConversationalRetrievalChain
 from langchain_groq import ChatGroq
 from langchain_community.vectorstores import Chroma
-import chromadb
 import requests
 
 # Define the system template for answering questions
