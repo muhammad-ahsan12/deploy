@@ -60,7 +60,7 @@ def main():
         embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
 
         # Create a Chroma vector database from the text documents
-        vectordb = Chroma.from_texts(texts=docs, embedding=embeddings, persist_directory=DB_DIR)
+        vectordb = Chroma.from_texts(texts=docs, embedding=embeddings)
         vectordb.persist()
 
         # Create a retriever from the Chroma vector database
