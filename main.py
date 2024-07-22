@@ -1,6 +1,5 @@
 import os
 import streamlit as st
-from langchain.chains import RetrievalQA
 from bs4 import BeautifulSoup
 from langchain.prompts.chat import (ChatPromptTemplate, HumanMessagePromptTemplate, SystemMessagePromptTemplate)
 from langchain.text_splitter import CharacterTextSplitter
