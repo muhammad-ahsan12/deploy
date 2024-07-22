@@ -4,7 +4,7 @@ requests
 langchain
 langchain-google-genai  
 langchain-groq 
-chromadb==0.5.4 
+chromadb==0.5.3
 langchain-chroma
 dataclasses-json==0.6.7
 langchain-community==0.2.9
