@@ -6,3 +6,4 @@ langchain-google-genai
 langchain-groq 
 chromadb 
 langchain-chroma
+langchain-community
