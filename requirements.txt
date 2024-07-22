@@ -1,7 +1,7 @@
-streamlit==1.12.0
-beautifulsoup4==4.11.1
-requests==2.28.1
-langchain-google-genai==0.0.1  # Adjust this to the correct version if it doesn't match
-langchain-groq==0.0.1  # Adjust this to the correct version if it doesn't match
-faiss-cpu==1.7.2
-langchain==0.0.1  # Adjust this to the correct version if it doesn't match
+streamlit==1.21.0
+langchain==0.0.6
+beautifulsoup4==4.12.2
+requests==2.31.0
+faiss-cpu==1.7.3
+langchain-google-genai==0.0.1
+langchain-groq==0.0.1
