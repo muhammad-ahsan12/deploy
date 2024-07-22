@@ -8,6 +8,4 @@ chromadb
 langchain-chroma
 dataclasses-json==0.6.7
 langchain-community==0.2.9
-marshmallow==3.21.3
-mypy-extensions[2024-07-22 07:21:41.994693] ==1.0.0
-typing-inspect==0.9.0
+
