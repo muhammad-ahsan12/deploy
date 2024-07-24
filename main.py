@@ -96,10 +96,10 @@ def main():
             user_col, bot_col = st.columns([1, 3])
             with user_col:
                 st.markdown(f"😃 **You:**")
-                st.markdown(f"<div style='background-color: #f7f5f5; padding: 10px; border-radius: 10px;'>{entry['query']}</div>", unsafe_allow_html=True)
+                st.markdown(f"<div style='background-color: #0a0a09; padding: 10px; border-radius: 10px;'>{entry['query']}</div>", unsafe_allow_html=True)
             with bot_col:
                 st.markdown(f"🤖 **Bot:**")
-                st.markdown(f"<div style='background-color: #696864; padding: 10px; border-radius: 10px;'>{entry['response']}</div>", unsafe_allow_html=True)
+                st.markdown(f"<div style='background-color: #0a0a09; padding: 10px; border-radius: 10px;'>{entry['response']}</div>", unsafe_allow_html=True)
 
 if __name__ == '__main__':
     main()
