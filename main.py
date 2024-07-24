@@ -98,8 +98,8 @@ def main():
                 st.markdown(f"😃 **You:**")
                 st.markdown(f"<div style='background-color: #121211; padding: 10px; border-radius: 10px;'>{entry['query']}</div>", unsafe_allow_html=True)
             with bot_col:
-                st.markdown(f"🤖 **\n\nBot:**")
-                st.markdown(f"\n\n<div style='background-color: #121211; padding: 10px; border-radius: 10px;'>{entry['response']}</div>", unsafe_allow_html=True)
+                st.markdown(f"\n\n\n\n🤖 **Bot:**")
+                st.markdown(f"\n\n\n\n<div style='background-color: #121211; padding: 10px; border-radius: 10px;'>{entry['response']}</div>", unsafe_allow_html=True)
 
 if __name__ == '__main__':
     main()
