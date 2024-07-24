@@ -101,7 +101,7 @@ def main():
 
     if st.session_state.chat_history:
         for entry in st.session_state.chat_history:
-            _, user_col = st.columns([2, 1])
+            _, user_col = st.columns([1, 1])
             with user_col:
                 st.markdown(f"😃 **You:**")
                 st.markdown(f"<div style='background-color:#000000; padding: 10px; border-radius: 10px;'>{entry['question']}</div>", unsafe_allow_html=True)
