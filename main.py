@@ -1,6 +1,9 @@
 import os
 import streamlit as st
 from langchain.chains import RetrievalQA
+from langchain.memory import ConversationBufferMemory #1
+from langchain.chains import ConversationalRetrievalChain #2
+from langchain.prompts import PromptTemplate #3
 from bs4 import BeautifulSoup
 from langchain.prompts.chat import (ChatPromptTemplate, HumanMessagePromptTemplate, SystemMessagePromptTemplate)
 from langchain.text_splitter import CharacterTextSplitter
@@ -73,11 +76,16 @@ def main():
         llm = ChatGroq(model="llama3-70b-8192", groq_api_key="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")
 
         # Create a RetrievalQA instance from the model and retriever
-        qa = RetrievalQA.from_chain_type(llm=llm, chain_type="stuff", retriever=retriever)
+        # qa = RetrievalQA.from_chain_type(llm=llm, chain_type="stuff", retriever=retriever) #4
+        memory = ConversationBufferMemory(memory_key='chat_history',return_messages=True)
+        qa = ConversationalRetrievalChain.from_llm(llm=llm, chain_type="stuff", 
+                                         retriever=retriever,
+                                         memory=memory,
+                                         condense_question_prompt=PromptTemplate.from_template(system_template)
 
         # Include chat history in the query
         full_query = {
-            "query": user_question,
+            "question": user_question,
             "chat_history": st.session_state.chat_history
         }
 
@@ -85,7 +93,7 @@ def main():
         response = qa.invoke(full_query)
         
         # Update the chat history
-        st.session_state.chat_history.append({"query": user_question, "response": response['result']})
+        st.session_state.chat_history.append({"question": user_question, "response": response['answer']})
 
         # Refresh the page to display the new chat message
         st.experimental_rerun()
