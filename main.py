@@ -108,7 +108,7 @@ def main():
                 st.markdown(f"<div style='background-color: #121211; padding: 10px; border-radius: 10px;'>{entry['query']}</div>", unsafe_allow_html=True)
         
               
-            _, bot_col = st.columns([1, 1])
+            _, bot_col = st.columns([1, 3])
             with bot_col:
                 st.markdown(f"🤖 **Bot:**")
                 st.markdown(f"<div style='background-color: #121211; padding: 10px; border-radius: 10px;'>{entry['response']}</div>", unsafe_allow_html=True)
