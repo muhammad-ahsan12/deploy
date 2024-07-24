@@ -98,28 +98,31 @@ def main():
         # Refresh the page to display the new chat message
         st.experimental_rerun()
 
-    # # Display the chat history in a structured manner
     # if st.session_state.chat_history:
     #     for entry in st.session_state.chat_history:
-    #         user_col, bot_col = st.columns([1, 3])
+    #         user_col, _ = st.columns([1, 1])
     #         with user_col:
     #             st.markdown(f"😃 **You:**")
-    #             st.markdown(f"<div style='background-color: #121211; padding: 10px; border-radius: 10px;'>{entry['query']}</div>", unsafe_allow_html=True)
-    #         with bot_col:
-    #             st.markdown(f"\n\n\n\n🤖 **Bot:**")
-    #             st.markdown(f"\n\n\n\n<div style='background-color: #121211; padding: 10px; border-radius: 10px;'>{entry['response']}</div>", unsafe_allow_html=True)
-    if st.session_state.chat_history:
-        for entry in st.session_state.chat_history:
-            user_col, _ = st.columns([1, 1])
-            with user_col:
-                st.markdown(f"😃 **You:**")
-                st.markdown(f"<div style='background-color: #000000; padding: 10px; border-radius: 10px;'>{entry['query']}</div>", unsafe_allow_html=True)
+    #             st.markdown(f"<div style='background-color: #000000; padding: 10px; border-radius: 10px;'>{entry['query']}</div>", unsafe_allow_html=True)
         
               
-            _, bot_col = st.columns([1, 3])
+    #         _, bot_col = st.columns([1, 3])
+    #         with bot_col:
+    #             st.markdown(f"🤖 **Bot:**")
+    #             st.markdown(f"<div style='background-color: #000000; padding: 10px; border-radius: 10px;'>{entry['response']}</div>", unsafe_allow_html=True)
+
+    if st.session_state.chat_history:
+        for entry in st.session_state.chat_history:
+            _, user_col = st.columns([2, 1])
+            with user_col:
+                st.markdown(f"😃**You:**")
+                st.markdown(f"<div style='background-color;#000000 padding: 10px; border-radius: 10px;'>{entry['question']}</div>", unsafe_allow_html=True)
+
+            bot_col, _ = st.columns([2, 1])
             with bot_col:
-                st.markdown(f"🤖 **Bot:**")
-                st.markdown(f"<div style='background-color: #000000; padding: 10px; border-radius: 10px;'>{entry['response']}</div>", unsafe_allow_html=True)
+                st.markdown(f"🤖**Bot:**")
+                st.markdown(f"<div style='background-color;#000000 padding: 10px; border-radius: 10px;'>{entry['response']}</div>", unsafe_allow_html=True)
+
 
 if __name__ == '__main__':
     main()
