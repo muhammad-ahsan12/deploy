@@ -97,7 +97,7 @@ def main():
         st.session_state.chat_history.append({"question": user_question, "response": response['answer']})
 
         # Refresh the page to display the new chat message
-        st.experimental_rerun()
+        # st.experimental_rerun()
 
     if st.session_state.chat_history:
         for entry in st.session_state.chat_history:
