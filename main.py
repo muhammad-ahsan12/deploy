@@ -73,7 +73,7 @@ def main():
         retriever = vectordb.as_retriever(search_kwargs={"k": 3})
 
         # Use a ChatGroq model for question-answering
-        llm = ChatGroq(model="llama3-70b-8192", groq_api_key="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")
+        llm = ChatGroq(model="llama3-70b-8192", groq_api_key="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")
 
         # Create a RetrievalQA instance from the model and retriever
         # qa = RetrievalQA.from_chain_type(llm=llm, chain_type="stuff", retriever=retriever) #4
